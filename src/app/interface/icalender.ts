@@ -1,2 +1,4 @@
-export interface Icalender {
+export interface ICalender {
+
+    title: string;
 }

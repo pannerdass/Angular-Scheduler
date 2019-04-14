@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { CalenderService } from '../services/calender.service';
 
 @Component({
   selector: 'app-date-picker',
@@ -6,12 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent implements OnInit {
+@ViewChild('calenderTbody')calenderBody:ElementRef;
+
+  Collection:any[]=[];
   isYear:boolean=false;
   isMonth:boolean=false;
   isDate:boolean=false;
-  yearValue:string="2020"
-  monthValue:string="jan"
-  constructor() { }
+  yearValue:number=2020
+  monthValue:number=4;
+  constructor(private calenderService:CalenderService) { }
 
   ngOnInit() {
 
@@ -35,7 +39,19 @@ export class DatePickerComponent implements OnInit {
 
 
   getYear(event){
-debugger;
+//debugger;
     this.yearValue=event;
+    this.switchToMonth();
+  }
+
+
+  getCalender(month){
+    // this.isYear=false;
+    // this.isMonth=false;
+    // this.isDate=true;
+debugger;
+     console.log(this.calenderBody)
+    this.monthValue=month;
+    this.Collection=this.calenderService.getCalender(this.yearValue,this.monthValue)
   }
 }

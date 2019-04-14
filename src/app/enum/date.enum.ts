@@ -1,4 +1,4 @@
-export enum Date {
+export enum eDate {
 
     Sunday=0,
     Monday=1,
