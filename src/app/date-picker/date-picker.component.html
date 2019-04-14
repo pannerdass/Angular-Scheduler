@@ -1,0 +1,134 @@
+<html>
+  <div class="mainheader">
+    <div class="middle-1" *ngIf="isYear" >
+      <table tabindex="0">
+        <tbody class="e-zoomin">
+          <tr role="row">
+            <td>
+              <span class="e-day" (click)="getYear($event.target.innerHTML)">2009</span>
+            </td>
+            <td><span class="e-day" (click)="getYear($event.target.innerHTML)">2010</span></td>
+            <td><span class="e-day"(click)="getYear($event.target.innerHTML)">2011</span></td>
+            <td><span class="e-day"(click)="getYear($event.target.innerHTML)">2012</span></td>
+          </tr>
+          <tr role="row">
+            <td><span class="e-day">2013</span></td>
+            <td><span class="e-day">2014</span></td>
+            <td><span class="e-day">2015</span></td>
+            <td><span class="e-day">2016</span></td>
+          </tr>
+          <tr role="row">
+            <td><span class="e-day">2017</span></td>
+            <td><span class="e-day">2018</span></td>
+            <td><span class="e-day">2019</span></td>
+            <td><span class="e-day">2020</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="middle-2" *ngIf="isMonth">
+      <table tabindex="0">
+        <tbody class="e-zoomin">
+          <tr role="row">
+            <td>
+              <span class="e-day">jan</span>
+            </td>
+            <td><span class="e-day">feb</span></td>
+            <td><span class="e-day">mar</span></td>
+            <td><span class="e-day">apr</span></td>
+          </tr>
+          <tr role="row">
+            <td><span class="e-day">may</span></td>
+            <td><span class="e-day">june</span></td>
+            <td><span class="e-day">july</span></td>
+            <td><span class="e-day">aug</span></td>
+          </tr>
+          <tr role="row">
+            <td><span class="e-day">sep</span></td>
+            <td><span class="e-day">oct</span></td>
+            <td><span class="e-day">nov</span></td>
+            <td><span class="e-day">dec</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="middle-3" *ngIf="isDate">
+      <table tabindex="0">
+        <tr>
+          <td>su</td>
+          <td>mo</td>
+          <td>tu</td>
+          <td>we</td>
+          <td>th</td>
+          <td>fr</td>
+          <td>sa</td>
+        </tr>
+
+        <tr>
+          <td>31</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr role="row">
+          <td>31</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr role="row">
+          <td>31</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr role="row">
+          <td>31</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr role="row">
+          <td>31</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr role="row">
+          <td>31</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+      </table>
+    </div>
+    <div class="e-footer-container">
+      <button class="e-btn e-today e-flat e-primary e-css">Today</button>
+    </div>
+  </div>
+
+<br/>
+<div>
+  <button (click)="switchToYear()" >{{yearValue}}</button>
+  <button (click)="switchToMonth()">Jan</button>
+</div>
+
+</html>

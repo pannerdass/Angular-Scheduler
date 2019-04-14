@@ -1,0 +1,24 @@
+.mainheader {
+  width: 232px;
+  height: 265px;
+  background-color: #fff;
+  border: 1px solid red;
+  box-shadow: none;
+}
+.e-day {
+  font-weight: normal;
+  height: 45px;
+  line-height: 45px;
+  width: 45px;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+table {
+  width: 100%;
+}
+.e-footer-container {
+  display: flex;
+}
