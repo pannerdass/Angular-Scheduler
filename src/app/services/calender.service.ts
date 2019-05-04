@@ -8,13 +8,15 @@ import { ICalender } from '../interface/icalender';
 export class CalenderService {
  
   private calender:ICalender;
-  private calenderItem:any[]=[];
- private fullcalender:any[]=[];
+  private calenderItem:ICalender[]=[];
+ private fullCalender: any[]=[];
   constructor() { }
 
 
    public getCalender(year:number,month:number):any{
     debugger;    
+    this.fullCalender=[];
+    this.calenderItem=[];
     let givenMonth=new Date(year,month);
     let getGivenMonthStartday=givenMonth.getDay();
     let getGivenMonthEndDate=new Date(givenMonth.getFullYear(),givenMonth.getMonth()+1,0).getDate();
@@ -39,12 +41,10 @@ export class CalenderService {
       this.calender={title: i.toString()}  ;
       this.calenderItem.push(this.calender);
       if(this.calenderItem.length % 7==0){
-      
-       this.fullcalender.push(this.calenderItem);
+   
+       this.fullCalender.push(this.calenderItem);
       this.calenderItem=[];
    
-   
-      }else{
    
       }
     }
@@ -60,10 +60,12 @@ export class CalenderService {
             
         }
         
-         this.fullcalender.push(this.calenderItem);
+         this.fullCalender.push(this.calenderItem);
         }
 
-        return this.fullcalender;
+        return this.fullCalender;
 
   }
+
+  
 }
