@@ -1,0 +1,45 @@
+body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td{
+  width:100px;
+  height:100px;
+  vertical-align: top;
+}
+.abs{
+  position:absolute;
+  margin-top: 2%;
+   
+}
+.range{
+   width:305px;
+   border: 1px solid black;
+ 
+   text-align:center;
+}
+.e-left-right-resize{
+cursor: ew-resize;
+float: right;
+right: 0;
+ position:absolute;
+   width: 8px;
+  height: 50%;
+  top:0;
+}
+.e-event-resize{
+  height: 100%;
+width: 10px;
+} 
+.e-right-handler{
+  height: 100%;
+width: 10px;
+}

@@ -8,8 +8,8 @@ import { ICalender } from '../interface/icalender';
 })
 export class CalenderService {
 
-  private calender: ICalender;
-  private calenderItem: ICalender[] = [];
+ 
+  private weekCollection: ICalender[] = [];
   private fullCalender: any[] = [];
   constructor() { }
 
@@ -17,20 +17,20 @@ export class CalenderService {
   public getCalender(year: number, month: number): any {
     debugger;
     this.fullCalender = [];
-    this.calenderItem = [];
+    this.weekCollection = [];
     let givenMonth = new Date(year, month);
     let getGivenMonthStartday = givenMonth.getDay();
     let getGivenMonthEndDate = new Date(givenMonth.getFullYear(), givenMonth.getMonth() + 1, 0).getDate();
     let getPreviousMonthEndDate = new Date(givenMonth.getFullYear(), givenMonth.getMonth(), 0).getDate();
 
-    this.getPreviousMonthDate(this.calenderItem, getGivenMonthStartday, getPreviousMonthEndDate);
-    this.getGivenMonthDate(this.fullCalender, this.calenderItem, getGivenMonthEndDate);
-    this.getNextMonthDate(this.fullCalender, this.calenderItem);
+    this.getPreviousMonthDate( getGivenMonthStartday, getPreviousMonthEndDate);
+    this.getGivenMonthDate(getGivenMonthEndDate);
+    this.getNextMonthDate();
     return this.fullCalender;
 
   }
 
-  getPreviousMonthDate(weekCollection: ICalender[], getGivenMonthStartday: number, getPreviousMonthEndDate: number) {
+  private getPreviousMonthDate(getGivenMonthStartday: number, getPreviousMonthEndDate: number) {
    
     let day: ICalender;
     let balanceWeekDays = getGivenMonthStartday - 1;
@@ -39,38 +39,49 @@ export class CalenderService {
 
       day = { title: (getPreviousMonthEndDate - balanceWeekDays).toString() }
       balanceWeekDays--;
-      weekCollection.push(day);
+      this.weekCollection.push(day);
 
     }
+    
   }
-  getGivenMonthDate(fullCalender: any[], weekCollection: ICalender[], givenMonthEndDate: number) {
+  private getGivenMonthDate(givenMonthEndDate: number) {
     let date: ICalender;
     for (var i = 1; i <= givenMonthEndDate; i++) {
       date = { title: i.toString() };
-      weekCollection.push(this.calender);
-      if (weekCollection.length % 7 == 0) {
+      this.weekCollection.push(date);
+      if (this.weekCollection.length % 7 == 0) {
 
-        fullCalender.push(weekCollection);
-        weekCollection = [];
+        this.fullCalender.push(this.weekCollection);
+        this.weekCollection = [];
       }
     }
 
   }
-  getNextMonthDate(fullCalender: any[], weekCollection: ICalender[]) {
+ private getNextMonthDate() {
     let date: ICalender;
-    if (weekCollection.length > 0) {
+    if (this.weekCollection.length > 0) {
 
-      let balanceCount = 8 - weekCollection.length;
+      let balanceCount = 8 - this.weekCollection.length;
 
       for (var i = 1; i < balanceCount; i++) {
         //this.calender=null;
         date = { title: i.toString() };
-        weekCollection.push(date);
+        this.weekCollection.push(date);
 
       }
 
-      fullCalender.push(weekCollection);
+      this.fullCalender.push(this.weekCollection);
     }
+  }
+
+ public getCurrentDateMonthYear(){
+
+     let date=new Date().getDate();
+     let month=new Date().getMonth();
+     let year=new Date().getFullYear();
+
+     return {"Date":date,"Month":month,"Year":year}
+
   }
 
 }
